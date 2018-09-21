@@ -1,0 +1,27 @@
+server:
+ port: 8080
+
+spring:
+ data:
+  elasticsearch:
+   #开启 Elasticsearch 仓库(默认值:true)
+   repositories:
+    enabled: true
+    
+   #配置es集群名称，默认为elasticsearch；修改的话要与elasticsearch.yml中的cluster.name属性一致
+   cluster-name: elasticsearch
+   
+   #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
+   #9200為Rest調用端口；9300為内部協議端口
+   cluster-nodes: www.whatu1.com:9300
+   
+   properties:
+    path:
+     logs: ./elasticsearch/log #elasticsearch日志存储目录
+     data: ./elasticsearch/data #elasticsearch数据存储目录
+     home: ./elasticsearch/index #elasticsearch索引存储目录
+     
+    #连接超时的时间
+    transport:
+     tcp:
+      connect_timeout: 120s
